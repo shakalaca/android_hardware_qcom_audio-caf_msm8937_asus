@@ -231,8 +231,6 @@ struct stream_out {
 
     bool realtime;
     int af_period_multiplier;
-    bool routing_change;
-
     struct audio_device *dev;
 };
 
@@ -259,8 +257,6 @@ struct stream_in {
     int bit_width;
     bool realtime;
     int af_period_multiplier;
-    bool routing_change;
-
     struct audio_device *dev;
 };
 
@@ -411,10 +407,6 @@ struct audio_usecase *get_usecase_from_list(const struct audio_device *adev,
 bool is_offload_usecase(audio_usecase_t uc_id);
 
 bool audio_is_true_native_stream_active(struct audio_device *adev);
-
-#ifdef ENABLE_TFA98XX
-static int pcm_open_device(struct stream_out *out);
-#endif
 
 int pcm_ioctl(struct pcm *pcm, int request, ...);
 
